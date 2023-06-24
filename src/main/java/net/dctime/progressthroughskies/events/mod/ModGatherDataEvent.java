@@ -1,8 +1,9 @@
-package net.dctime.progressthroughskies.events.datagen;
+package net.dctime.progressthroughskies.events.mod;
 
-import net.dctime.progressthroughskies.events.ProgressThroughSkies;
-import net.dctime.progressthroughskies.events.datagen.client.ModEnUsLanguageProvider;
-import net.dctime.progressthroughskies.events.datagen.client.ModItemModelProvider;
+import net.dctime.progressthroughskies.datagen.client.ModBlockStateProvider;
+import net.dctime.progressthroughskies.datagen.client.ModEnUsLanguageProvider;
+import net.dctime.progressthroughskies.datagen.client.ModItemModelProvider;
+import net.dctime.progressthroughskies.events.mod.ProgressThroughSkies;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
@@ -26,6 +27,11 @@ public class ModGatherDataEvent
         gen.addProvider(
                 event.includeClient(),
                 new ModEnUsLanguageProvider(gen, "en_us")
+        );
+
+        gen.addProvider(
+                event.includeClient(),
+                new ModBlockStateProvider(gen, efh)
         );
     }
 }

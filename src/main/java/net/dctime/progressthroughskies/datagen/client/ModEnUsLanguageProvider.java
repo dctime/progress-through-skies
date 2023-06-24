@@ -1,6 +1,6 @@
-package net.dctime.progressthroughskies.events.datagen.client;
+package net.dctime.progressthroughskies.datagen.client;
 
-import net.dctime.progressthroughskies.events.ProgressThroughSkies;
+import net.dctime.progressthroughskies.events.mod.ProgressThroughSkies;
 import net.dctime.progressthroughskies.registers.ModItems;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;

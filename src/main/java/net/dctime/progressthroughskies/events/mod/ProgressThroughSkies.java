@@ -1,6 +1,7 @@
-package net.dctime.progressthroughskies.events;
+package net.dctime.progressthroughskies.events.mod;
 
 import com.mojang.logging.LogUtils;
+import net.dctime.progressthroughskies.registers.ModBlocks;
 import net.dctime.progressthroughskies.registers.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.Blocks;
@@ -33,6 +34,7 @@ public class ProgressThroughSkies
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
