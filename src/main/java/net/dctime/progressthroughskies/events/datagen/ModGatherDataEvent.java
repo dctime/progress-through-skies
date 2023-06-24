@@ -1,6 +1,7 @@
 package net.dctime.progressthroughskies.events.datagen;
 
-import net.dctime.progressthroughskies.ProgressThroughSkies;
+import net.dctime.progressthroughskies.events.ProgressThroughSkies;
+import net.dctime.progressthroughskies.events.datagen.client.ModEnUsLanguageProvider;
 import net.dctime.progressthroughskies.events.datagen.client.ModItemModelProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -13,7 +14,6 @@ public class ModGatherDataEvent
 {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
-        System.out.println("AHHHHHHHHHHHHHHHHHHHHHHHHHH");
         DataGenerator gen = event.getGenerator();
         ExistingFileHelper efh = event.getExistingFileHelper();
 
@@ -21,6 +21,11 @@ public class ModGatherDataEvent
                 // Tell generator to run only when client assets are generating
                 event.includeClient(),
                 new ModItemModelProvider(gen, efh)
+        );
+
+        gen.addProvider(
+                event.includeClient(),
+                new ModEnUsLanguageProvider(gen, "en_us")
         );
     }
 }

@@ -1,4 +1,4 @@
-package net.dctime.progressthroughskies;
+package net.dctime.progressthroughskies.events;
 
 import com.mojang.logging.LogUtils;
 import net.dctime.progressthroughskies.registers.ModItems;

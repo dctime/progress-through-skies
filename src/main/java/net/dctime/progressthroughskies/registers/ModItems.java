@@ -1,6 +1,6 @@
 package net.dctime.progressthroughskies.registers;
 
-import net.dctime.progressthroughskies.ProgressThroughSkies;
+import net.dctime.progressthroughskies.events.ProgressThroughSkies;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
