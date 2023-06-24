@@ -18,5 +18,6 @@ public class ModEnUsLanguageProvider extends LanguageProvider
     {
         this.addItem(ModItems.DUSTED_BEDROCK, "Dusted Bedrock");
         this.addItem(ModItems.BEDROCK_DUST, "Bedrock Dust");
+        this.add("itemGroup.progress_through_skies", "Progress Through Skies");
     }
 }

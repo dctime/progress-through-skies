@@ -1,4 +1,5 @@
 {
   "block.progressthroughskies.dusted_bedrock": "Dusted Bedrock",
-  "item.progressthroughskies.bedrock_dust": "Bedrock Dust"
+  "item.progressthroughskies.bedrock_dust": "Bedrock Dust",
+  "itemGroup.progress_through_skies": "Progress Through Skies"
 }
