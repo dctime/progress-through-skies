@@ -17,5 +17,7 @@ public class ModItemModelProvider extends ItemModelProvider
     protected void registerModels()
     {
         this.basicItem(ModItems.BEDROCK_DUST.get());
+        this.basicItem(ModItems.SAND_DUST.get());
+        this.basicItem(ModItems.GRAVEL_DUST.get());
     }
 }

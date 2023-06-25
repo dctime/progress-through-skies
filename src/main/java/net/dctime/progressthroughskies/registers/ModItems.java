@@ -19,6 +19,10 @@ public class ModItems
     public static final RegistryObject<BlockItem> BEDROCK_GRAVEL = ITEMS.register("bedrock_gravel", () ->
             new BlockItem(ModBlocks.BEDROCK_GRAVEL.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
 
+    public static final RegistryObject<Item> SAND_DUST = ITEMS.register("sand_dust", () -> new Item(new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
+
+    public static final RegistryObject<Item> GRAVEL_DUST = ITEMS.register("gravel_dust", () -> new Item(new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
+
     public static void register(IEventBus eventBus)
     {
         ITEMS.register(eventBus);

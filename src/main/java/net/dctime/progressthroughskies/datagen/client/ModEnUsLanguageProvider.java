@@ -20,5 +20,7 @@ public class ModEnUsLanguageProvider extends LanguageProvider
         this.addItem(ModItems.BEDROCK_DUST, "Bedrock Dust");
         this.add("itemGroup.progress_through_skies", "Progress Through Skies"); // Creative Mod Tab
         this.addItem(ModItems.BEDROCK_GRAVEL, "Bedrock Gravel");
+        this.addItem(ModItems.SAND_DUST, "Sand Dust");
+        this.addItem(ModItems.GRAVEL_DUST, "Gravel Dust");
     }
 }

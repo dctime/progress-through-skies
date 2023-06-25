@@ -2,5 +2,7 @@
   "block.progressthroughskies.bedrock_gravel": "Bedrock Gravel",
   "block.progressthroughskies.dusted_bedrock": "Dusted Bedrock",
   "item.progressthroughskies.bedrock_dust": "Bedrock Dust",
+  "item.progressthroughskies.gravel_dust": "Gravel Dust",
+  "item.progressthroughskies.sand_dust": "Sand Dust",
   "itemGroup.progress_through_skies": "Progress Through Skies"
 }
