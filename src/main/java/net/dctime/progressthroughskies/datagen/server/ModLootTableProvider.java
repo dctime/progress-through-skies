@@ -1,8 +1,8 @@
 package net.dctime.progressthroughskies.datagen.server;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
 import net.dctime.progressthroughskies.datagen.server.loot_tables.ModBlockLootTable;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
