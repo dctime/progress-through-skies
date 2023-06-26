@@ -22,5 +22,8 @@ public class ModEnUsLanguageProvider extends LanguageProvider
         this.addItem(ModItems.BEDROCK_GRAVEL, "Bedrock Gravel");
         this.addItem(ModItems.SAND_DUST, "Sand Dust");
         this.addItem(ModItems.GRAVEL_DUST, "Gravel Dust");
+        this.addItem(ModItems.RAIN_WAND, "Rain Wand");
+        this.add("tooltip.rain_wand.info", "&7Summons rain by right clicking it");
+        this.add("tooltip.rain_wand.warn", "&l&4&o&nStrike lightning on your head for not having patience");
     }
 }
