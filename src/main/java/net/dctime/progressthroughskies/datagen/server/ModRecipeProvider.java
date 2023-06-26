@@ -24,10 +24,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapedRecipeBuilder.shaped(Blocks.SAND, 1)
                 .pattern("XX").pattern("XX").define('X', ModItems.SAND_DUST.get())
-                .unlockedBy("has_sand_dust", has(ModItems.SAND_DUST.get())).save(consumer);
+                .unlockedBy("has_sand_dust", has(ModItems.SAND_DUST.get())).save(consumer, "sand_dust_to_sand");
 
         ShapedRecipeBuilder.shaped(Blocks.GRAVEL, 1)
                 .pattern("XX").pattern("XX").define('X', ModItems.GRAVEL_DUST.get())
-                .unlockedBy("has_gravel_dust", has(ModItems.GRAVEL_DUST.get())).save(consumer);
+                .unlockedBy("has_gravel_dust", has(ModItems.GRAVEL_DUST.get())).save(consumer, "gravel_dust_to_gravel");
     }
 }

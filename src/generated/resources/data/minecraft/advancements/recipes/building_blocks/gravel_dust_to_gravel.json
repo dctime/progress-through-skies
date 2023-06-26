@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sand_dust": {
+    "has_gravel_dust": {
       "conditions": {
         "items": [
           {
             "items": [
-              "progressthroughskies:sand_dust"
+              "progressthroughskies:gravel_dust"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:sand"
+        "recipe": "minecraft:gravel_dust_to_gravel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_sand_dust",
+      "has_gravel_dust",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:sand"
+      "minecraft:gravel_dust_to_gravel"
     ]
   }
 }
