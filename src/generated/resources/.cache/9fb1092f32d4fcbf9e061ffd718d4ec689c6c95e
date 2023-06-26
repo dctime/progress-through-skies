@@ -1,3 +1,7 @@
-// 1.19.2	2023-06-26T10:49:01.6291685	Recipes
+// 1.19.2	2023-06-26T11:18:35.2124286	Recipes
+c962c6d9b327289ed76d19f9e697e0f29fb5f25c data/minecraft/advancements/recipes/building_blocks/gravel.json
+f63f39d77f51b130e18ed26aec2f5b3e312ca618 data/minecraft/advancements/recipes/building_blocks/sand.json
+1425bbdcd2db47dcff2beedab69edce909c8cc2d data/minecraft/recipes/gravel.json
+cbf00ce069d0dffca8e37e207196bd478ade11ff data/minecraft/recipes/sand.json
 7c28eab87280d52edef51c484424f0920b839fb7 data/progressthroughskies/advancements/recipes/progress_through_skies/bedrock_gravel.json
 3dffc1f49fe58e4d0f3f74cd7397bdfcff502b55 data/progressthroughskies/recipes/bedrock_gravel.json
