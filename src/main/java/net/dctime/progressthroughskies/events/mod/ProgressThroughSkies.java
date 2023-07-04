@@ -1,6 +1,7 @@
 package net.dctime.progressthroughskies.events.mod;
 
 import com.mojang.logging.LogUtils;
+import net.dctime.progressthroughskies.network.ModNetworkHandler;
 import net.dctime.progressthroughskies.registers.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -15,6 +16,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
@@ -48,7 +50,7 @@ public class ProgressThroughSkies
     {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
-        LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+        event.enqueueWork(ModNetworkHandler::init);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

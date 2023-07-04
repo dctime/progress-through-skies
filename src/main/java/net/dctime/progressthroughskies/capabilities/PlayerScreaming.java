@@ -35,8 +35,8 @@ public class PlayerScreaming
 
     public void startScreaming()
     {
-        // the audio is 312 ticks long
-        this.screamingCooldown = 312;
+        // the audio is 280 ticks long
+        this.screamingCooldown = 280;
     }
 
     public void tick()
