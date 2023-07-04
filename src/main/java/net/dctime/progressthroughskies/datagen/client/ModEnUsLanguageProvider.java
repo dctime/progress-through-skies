@@ -25,5 +25,7 @@ public class ModEnUsLanguageProvider extends LanguageProvider
         this.addItem(ModItems.RAIN_WAND, "Rain Wand");
         this.add("tooltip.rain_wand.info", "&7Summons rain by right clicking it");
         this.add("tooltip.rain_wand.warn", "&l&4&o&nStrike lightning on your head for not having patience");
+        this.addItem(ModItems.DUSTED_WATER_BUCKET, "Dusted Water Bucket");
+        this.add("fluid_type.progressthroughskies.dusted_water", "Dusted Water");
     }
 }

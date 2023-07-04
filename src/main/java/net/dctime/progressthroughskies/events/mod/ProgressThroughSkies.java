@@ -1,10 +1,7 @@
 package net.dctime.progressthroughskies.events.mod;
 
 import com.mojang.logging.LogUtils;
-import net.dctime.progressthroughskies.registers.ModBlocks;
-import net.dctime.progressthroughskies.registers.ModFluids;
-import net.dctime.progressthroughskies.registers.ModItems;
-import net.dctime.progressthroughskies.registers.ModFluidTypes;
+import net.dctime.progressthroughskies.registers.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -41,6 +38,7 @@ public class ProgressThroughSkies
         ModBlocks.register(modEventBus);
         ModFluidTypes.register(modEventBus);
         ModFluids.register(modEventBus);
+        ModSoundEvents.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

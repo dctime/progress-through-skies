@@ -3,6 +3,7 @@ package net.dctime.progressthroughskies.events.mod;
 import net.dctime.progressthroughskies.datagen.client.ModBlockStateProvider;
 import net.dctime.progressthroughskies.datagen.client.ModEnUsLanguageProvider;
 import net.dctime.progressthroughskies.datagen.client.ModItemModelProvider;
+import net.dctime.progressthroughskies.datagen.client.ModSoundDefinitionsProvider;
 import net.dctime.progressthroughskies.datagen.server.ModLootTableProvider;
 import net.dctime.progressthroughskies.datagen.server.ModRecipeProvider;
 import net.minecraft.data.DataGenerator;
@@ -43,6 +44,11 @@ public class ModGatherDataEvent
         gen.addProvider(
                 event.includeServer(),
                 new ModRecipeProvider(gen)
+        );
+
+        gen.addProvider(
+                event.includeClient(),
+                new ModSoundDefinitionsProvider(gen, efh)
         );
     }
 }
