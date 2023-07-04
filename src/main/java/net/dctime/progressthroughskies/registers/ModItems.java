@@ -2,9 +2,7 @@ package net.dctime.progressthroughskies.registers;
 
 import net.dctime.progressthroughskies.events.mod.ProgressThroughSkies;
 import net.dctime.progressthroughskies.registers.items.RainWandItem;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -25,6 +23,9 @@ public class ModItems
     public static final RegistryObject<Item> RAIN_WAND = ITEMS.register("rain_wand", () -> new RainWandItem(
             new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB).stacksTo(1).rarity(Rarity.UNCOMMON)
     ));
+
+    public static final RegistryObject<Item> DUSTED_WATER_BUCKET = ITEMS.register("dusted_water_bucket",
+            () -> new BucketItem(ModFluids.SOURCE_DUSTED_WATER, new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB).craftRemainder(Items.BUCKET).stacksTo(1)));
 
 
     public static void register(IEventBus eventBus)

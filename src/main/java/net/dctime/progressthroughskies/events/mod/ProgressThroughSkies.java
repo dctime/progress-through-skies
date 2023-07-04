@@ -2,8 +2,12 @@ package net.dctime.progressthroughskies.events.mod;
 
 import com.mojang.logging.LogUtils;
 import net.dctime.progressthroughskies.registers.ModBlocks;
+import net.dctime.progressthroughskies.registers.ModFluids;
 import net.dctime.progressthroughskies.registers.ModItems;
+import net.dctime.progressthroughskies.registers.ModFluidTypes;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -35,6 +39,8 @@ public class ProgressThroughSkies
         modEventBus.addListener(this::commonSetup);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModFluidTypes.register(modEventBus);
+        ModFluids.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -65,6 +71,10 @@ public class ProgressThroughSkies
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+
+            LOGGER.info("Set dusted water render type to translucent");
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_DUSTED_WATER.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_DUSTED_WATER.get(), RenderType.translucent());
         }
     }
 }

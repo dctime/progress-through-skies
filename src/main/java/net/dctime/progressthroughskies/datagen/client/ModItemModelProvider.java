@@ -20,5 +20,6 @@ public class ModItemModelProvider extends ItemModelProvider
         this.basicItem(ModItems.SAND_DUST.get());
         this.basicItem(ModItems.GRAVEL_DUST.get());
         this.basicItem(ModItems.RAIN_WAND.get());
+        this.basicItem(ModItems.DUSTED_WATER_BUCKET.get());
     }
 }
