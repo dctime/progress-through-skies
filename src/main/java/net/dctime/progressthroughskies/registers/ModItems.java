@@ -27,6 +27,8 @@ public class ModItems
     public static final RegistryObject<Item> DUSTED_WATER_BUCKET = ITEMS.register("dusted_water_bucket",
             () -> new BucketItem(ModFluids.SOURCE_DUSTED_WATER, new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB).craftRemainder(Items.BUCKET).stacksTo(1)));
 
+    public static final RegistryObject<BlockItem> ADDER_ITEM = ITEMS.register("adder",
+            () -> new BlockItem(ModBlocks.ADDER.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
 
     public static void register(IEventBus eventBus)
     {

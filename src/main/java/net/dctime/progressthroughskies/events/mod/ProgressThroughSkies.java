@@ -3,7 +3,9 @@ package net.dctime.progressthroughskies.events.mod;
 import com.mojang.logging.LogUtils;
 import net.dctime.progressthroughskies.network.ModNetworkHandler;
 import net.dctime.progressthroughskies.registers.*;
+import net.dctime.progressthroughskies.registers.screens.AdderScreen;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Blocks;
@@ -41,6 +43,8 @@ public class ProgressThroughSkies
         ModFluidTypes.register(modEventBus);
         ModFluids.register(modEventBus);
         ModSoundEvents.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -75,6 +79,8 @@ public class ProgressThroughSkies
             LOGGER.info("Set dusted water render type to translucent");
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_DUSTED_WATER.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_DUSTED_WATER.get(), RenderType.translucent());
+
+            MenuScreens.register(ModMenuTypes.ADDER_MENU_TYPE.get(), AdderScreen::new);
         }
     }
 }

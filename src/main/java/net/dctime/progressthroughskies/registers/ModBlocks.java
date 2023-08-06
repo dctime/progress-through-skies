@@ -1,6 +1,7 @@
 package net.dctime.progressthroughskies.registers;
 
 import net.dctime.progressthroughskies.events.mod.ProgressThroughSkies;
+import net.dctime.progressthroughskies.registers.blocks.AdderBlock;
 import net.dctime.progressthroughskies.registers.blocks.DustedBedrockBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -21,6 +22,8 @@ public class ModBlocks
     public static final RegistryObject<Block> BEDROCK_GRAVEL = BLOCKS.register("bedrock_gravel", () -> new GravelBlock(BlockBehaviour.Properties.copy(Blocks.GRAVEL)));
 
     public static final RegistryObject<LiquidBlock> DUSTED_WATER = BLOCKS.register("dusted_water_block", () -> new LiquidBlock(ModFluids.SOURCE_DUSTED_WATER, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
+
+    public static final RegistryObject<Block> ADDER = BLOCKS.register("adder_block", () -> new AdderBlock(BlockBehaviour.Properties.of(Material.STONE)));
 
     public static void register(IEventBus eventBus)
     {
