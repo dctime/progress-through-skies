@@ -2,7 +2,9 @@ package net.dctime.progressthroughskies.registers.blockentities;
 
 import com.ibm.icu.impl.StringRange;
 import com.mojang.serialization.Decoder;
+import net.dctime.progressthroughskies.lib.WrappedHandler;
 import net.dctime.progressthroughskies.registers.ModBlockEntities;
+import net.dctime.progressthroughskies.registers.blocks.AdderBlock;
 import net.dctime.progressthroughskies.registers.menus.AdderMenu;
 import net.dctime.progressthroughskies.registers.recipes.AdderRecipe;
 import net.minecraft.core.BlockPos;
@@ -18,17 +20,23 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
@@ -38,6 +46,30 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 78;
+
+    private final FluidTank FLUID_TANK = new FluidTank(64000)
+    {
+        @Override
+        protected void onContentsChanged() {
+            setChanged();
+        }
+
+        @Override
+        public boolean isFluidValid(FluidStack stack) {
+            return false;
+        }
+    };
+    private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
+
+    public void setFluid(FluidStack stack)
+    {
+        this.FLUID_TANK.setFluid(stack);
+    }
+
+    public FluidStack getFluid()
+    {
+        return this.FLUID_TANK.getFluid();
+    }
 
     public AdderBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.ADDER_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -77,16 +109,77 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
             setChanged();
             super.onContentsChanged(slot);
         }
+
+        // can stack put into slot? used in directionWrappedHandlerMap
+        @Override
+        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            return switch (slot)
+            {
+                case 0 -> true;
+                case 1 -> true;
+                case 2 -> false;
+                case 3 -> false;
+                case 4 -> false;
+                default -> super.isItemValid(slot, stack);
+            };
+        }
     };
+
+    // pass in direction (block's(relative), not someone who place's perspective (general)), get LazyOptional<WrappedHandler>
+    // (i) -> i == 3 (Can extract item of 3rd slot)
+    // (i, s) -> true s can be inserted i
+    private final Map<Direction, LazyOptional<WrappedHandler>> directionWrappedHandlerMap =
+            Map.of(Direction.DOWN, LazyOptional.of(() -> new WrappedHandler(itemStackHandler, (i) -> i == 3 || i == 4, (i, s) -> false)),
+                    Direction.NORTH, LazyOptional.of(() -> new WrappedHandler(itemStackHandler, (i) -> false,
+                            (index, stack) -> false)),
+                    Direction.SOUTH, LazyOptional.of(() -> new WrappedHandler(itemStackHandler, (i) -> false, (i, s) -> false)),
+                    Direction.EAST, LazyOptional.of(() -> new WrappedHandler(itemStackHandler, (i) -> false,
+                            (index, stack) -> index == 0 && itemStackHandler.isItemValid(0, stack))),
+                    Direction.WEST, LazyOptional.of(() -> new WrappedHandler(itemStackHandler, (i) -> i == 2,
+                            (index, stack) -> false)),
+                    Direction.UP, LazyOptional.of(() -> new WrappedHandler(itemStackHandler, (i) -> false,
+                            (index, stack) -> index == 1 && itemStackHandler.isItemValid(1, stack))));
 
     private LazyOptional<ItemStackHandler> lazyItemStackHandler = LazyOptional.empty();
 
 
+    // if someone want to get capability of the block entity
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         if(cap == ForgeCapabilities.ITEM_HANDLER)
         {
-            return lazyItemStackHandler.cast();
+            if (side == null)
+            {
+                return lazyItemStackHandler.cast(); // return lazyItemStackHandler nothing changes
+            }
+
+            // limit Sides
+            if (directionWrappedHandlerMap.containsKey(side))
+            {
+                Direction localDir = this.getBlockState().getValue(AdderBlock.FACING);
+
+                if (side == Direction.UP || side == Direction.DOWN)
+                {
+                    return directionWrappedHandlerMap.get(side).cast();
+                }
+                return switch (localDir)
+                {
+                    // NORTH: PEOPLE at south when placed, NORTH SIDE IS AT SOUTH, NEED FLIP
+                    // cast() return the value of the lambda expression stored in the directionWrappedHandling
+                    case NORTH -> directionWrappedHandlerMap.get(side.getOpposite()).cast();
+                    case SOUTH -> directionWrappedHandlerMap.get(side).cast();
+                    // EAST:　PEOPLE at east, NORTH SIDE is at EAST, counterclockwise to match the local one to the people one
+                    case EAST -> directionWrappedHandlerMap.get(side.getCounterClockWise()).cast();
+                    case WEST -> directionWrappedHandlerMap.get(side.getClockWise()).cast();
+                    default -> directionWrappedHandlerMap.get(side).cast();
+                };
+            }
+
+        }
+
+        if (cap == ForgeCapabilities.FLUID_HANDLER)
+        {
+            return lazyFluidHandler.cast();
         }
         return super.getCapability(cap, side);
     }
@@ -105,16 +198,20 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
 
 
 
+    // Call when first added to the world
     @Override
     public void onLoad() {
         lazyItemStackHandler = LazyOptional.of(() -> itemStackHandler);
+        lazyFluidHandler = LazyOptional.of(() -> FLUID_TANK);
         super.onLoad();
     }
 
+    // Check it its ok
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
         lazyItemStackHandler.invalidate();
+        lazyFluidHandler.invalidate();
     }
 
     // When player leaving the world, put items into file (nbt data)
@@ -122,13 +219,16 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemStackHandler.serializeNBT());
         super.saveAdditional(pTag);
+        FLUID_TANK.writeToNBT(pTag);
     }
 
     // When chunk is loaded or player joins the world
     @Override
     public void load(CompoundTag pTag) {
         itemStackHandler.deserializeNBT(pTag.getCompound("inventory"));
+        FLUID_TANK.readFromNBT(pTag);
         super.load(pTag);
+
     }
 
     public void drops()
