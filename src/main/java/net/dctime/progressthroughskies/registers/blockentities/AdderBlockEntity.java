@@ -1,8 +1,10 @@
 package net.dctime.progressthroughskies.registers.blockentities;
 
+import com.ibm.icu.impl.StringRange;
 import com.mojang.serialization.Decoder;
 import net.dctime.progressthroughskies.registers.ModBlockEntities;
 import net.dctime.progressthroughskies.registers.menus.AdderMenu;
+import net.dctime.progressthroughskies.registers.recipes.AdderRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -26,6 +28,9 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
+import java.util.Random;
 
 public class AdderBlockEntity extends BlockEntity implements MenuProvider
 {
@@ -146,7 +151,17 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
             return;
         }
 
-        if (hasRecipe(entity)) // start the crafting progress
+        // inventory to store the current items in the item slots in the machine
+        SimpleContainer inventory = new SimpleContainer(entity.itemStackHandler.getSlots());
+
+        for (int i = 0; i < 5; i++)
+        {
+            inventory.setItem(i, entity.itemStackHandler.getStackInSlot(i));
+        }
+
+        Optional<AdderRecipe> recipe = level.getRecipeManager().getRecipeFor(AdderRecipe.Type.INSTANCE, inventory, level);
+
+        if (recipe.isPresent()) // start the crafting progress
         {
             entity.progress++;
             // set block entity
@@ -154,7 +169,7 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
 
             if (entity.progress >= entity.maxProgress)
             {
-                craftItem(entity); //eat input get output
+                craftItem(entity, recipe.get()); //eat input get output
                 entity.progress = 0;
             }
 
@@ -171,31 +186,54 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
         this.progress = 0;
     }
 
-    private static void craftItem(AdderBlockEntity entity) {
-        if (hasRecipe(entity))
+    private static void craftItem(AdderBlockEntity entity, AdderRecipe recipe) {
+        Random rand = new Random();
+        entity.itemStackHandler.extractItem(0, recipe.input_left.getCount(), false);
+        entity.itemStackHandler.extractItem(1, recipe.input_right.getCount(), false);
+        entity.itemStackHandler.setStackInSlot(2, new ItemStack(recipe.main_output.getItem(), entity.itemStackHandler.getStackInSlot(2).getCount()+recipe.main_output.getCount()));
+
+        if (rand.nextDouble() < recipe.by_product_1_chance)
         {
-            entity.itemStackHandler.extractItem(0, 1, false);
-            entity.itemStackHandler.setStackInSlot(2, new ItemStack(Items.DIRT, entity.itemStackHandler.getStackInSlot(2).getCount()+1));
+            entity.itemStackHandler.setStackInSlot(3, new ItemStack(recipe.by_product_1.getItem(), entity.itemStackHandler.getStackInSlot(3).getCount()+recipe.by_product_1.getCount()));
+        }
+
+        if (rand.nextDouble() < recipe.by_product_2_chance)
+        {
+            entity.itemStackHandler.setStackInSlot(4, new ItemStack(recipe.by_product_2.getItem(), entity.itemStackHandler.getStackInSlot(4).getCount()+recipe.by_product_2.getCount()));
         }
 
         entity.resetProgress();
     }
 
-    private static boolean hasRecipe(AdderBlockEntity entity)
-    {
-        SimpleContainer inventory = new SimpleContainer(entity.itemStackHandler.getSlots());
 
-        for (int i = 0; i < 5; i++)
-        {
-            inventory.setItem(i, entity.itemStackHandler.getStackInSlot(i));
-        }
-
-        boolean leftValidItem = entity.itemStackHandler.getStackInSlot(0).getItem() == Items.DIRT;
-        boolean doOutputHasSpaceForOneMore = entity.itemStackHandler.getSlotLimit(2) > entity.itemStackHandler.getStackInSlot(2).getCount() ;
-        boolean doOutputSameAsInTheOutputSlot = entity.checkItemSame(Items.DIRT.getDefaultInstance()) || entity.itemStackHandler.getStackInSlot(2).isEmpty();
-
-        return leftValidItem && doOutputHasSpaceForOneMore && doOutputSameAsInTheOutputSlot;
-    }
+//    private static boolean hasRecipe(AdderBlockEntity entity)
+//    {
+//        Level level = entity.level;
+//
+//        // inventory to store the current items in the item slots in the machine
+//        SimpleContainer inventory = new SimpleContainer(entity.itemStackHandler.getSlots());
+//
+//        for (int i = 0; i < 5; i++)
+//        {
+//            inventory.setItem(i, entity.itemStackHandler.getStackInSlot(i));
+//        }
+//
+//        assert level != null;
+//        Optional<AdderRecipe> recipe = level.getRecipeManager().getRecipeFor(AdderRecipe.Type.INSTANCE, inventory, level);
+//
+//        if (recipe.isPresent())
+//        {
+//            boolean doOutputHasSpaceForOneMore = entity.itemStackHandler.getSlotLimit(2) >= entity.itemStackHandler.getStackInSlot(2).getCount()+recipe.get().main_output.getCount();
+//            boolean doOutputSameAsInTheOutputSlot = entity.checkItemSame(recipe.get().main_output) || entity.itemStackHandler.getStackInSlot(2).isEmpty();
+//            return doOutputHasSpaceForOneMore && doOutputSameAsInTheOutputSlot;
+//        }
+//        else
+//        {
+//            return false;
+//        }
+//
+//
+//    }
 
     private boolean checkItemSame(ItemStack itemStack)
     {

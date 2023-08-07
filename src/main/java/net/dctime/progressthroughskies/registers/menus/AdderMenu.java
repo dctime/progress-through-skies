@@ -35,9 +35,9 @@ public class AdderMenu extends AbstractContainerMenu {
     {
         int progress = data.get(0);
         int max_progress = data.get(1);
-        int progress_arrow_size = 12; //TODO
+        int progress_arrow_size = 12;
 
-        LOGGER.debug("Processing" + progress_arrow_size * (progress / max_progress));
+//        LOGGER.debug("Processing" + progress_arrow_size * (progress / max_progress));
         return (int)(progress_arrow_size * ((float) progress / max_progress));
     }
 
@@ -62,8 +62,8 @@ public class AdderMenu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(handler, 0, 37, 38));
             this.addSlot(new SlotItemHandler(handler, 1, 77, 38));
             this.addSlot(new SlotItemHandler(handler, 2, 121, 38));
-            this.addSlot(new SlotItemHandler(handler, 3, 110, 61));
-            this.addSlot(new SlotItemHandler(handler, 4, 86, 61));
+            this.addSlot(new SlotItemHandler(handler, 3, 112, 60));
+            this.addSlot(new SlotItemHandler(handler, 4, 130, 60));
         });
 
         this.addDataSlots(data);

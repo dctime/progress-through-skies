@@ -1,0 +1,25 @@
+{
+  "type": "progressthroughskies:adder",
+  "input_left": {
+    "item": "minecraft:stone",
+    "count": 3
+  },
+  "input_right": {
+    "item": "minecraft:dirt",
+    "count": 2
+  },
+  "main_output": {
+    "item": "minecraft:stick",
+    "count": 2
+  },
+  "by_product_1": {
+    "item": "minecraft:diamond",
+    "count": 3
+  },
+  "by_product_1_chance": 0.5,
+  "by_product_2": {
+    "item": "minecraft:coal",
+    "count": 3
+  },
+  "by_product_2_chance": 0.7
+}
