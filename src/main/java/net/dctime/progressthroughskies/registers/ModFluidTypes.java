@@ -26,6 +26,16 @@ public class ModFluidTypes
                     FluidType.Properties.create().canDrown(true).canHydrate(true).density(15).lightLevel(1)
             ));
 
+    public static RegistryObject<FluidType> MATH_ENERGY =
+            FLUID_TYPES.register("math_energy", () -> new BaseFluidType(
+                    new ResourceLocation("block/water_still"),
+                    new ResourceLocation("block/water_flow"),
+                    new ResourceLocation(ProgressThroughSkies.MODID, "misc/in_math_energy"),
+                    0xff4fe5ff,
+                    new Vector3f(79f/255f, 229f/255f, 254f/255f),
+                    FluidType.Properties.create().canDrown(true).canHydrate(true).density(15).lightLevel(1)
+            ));
+
     public static void register(IEventBus eventBus)
     {
         FLUID_TYPES.register(eventBus);

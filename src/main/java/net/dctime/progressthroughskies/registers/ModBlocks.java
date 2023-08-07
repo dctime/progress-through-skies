@@ -22,6 +22,7 @@ public class ModBlocks
     public static final RegistryObject<Block> BEDROCK_GRAVEL = BLOCKS.register("bedrock_gravel", () -> new GravelBlock(BlockBehaviour.Properties.copy(Blocks.GRAVEL)));
 
     public static final RegistryObject<LiquidBlock> DUSTED_WATER = BLOCKS.register("dusted_water_block", () -> new LiquidBlock(ModFluids.SOURCE_DUSTED_WATER, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
+    public static final RegistryObject<LiquidBlock> MATH_ENERGY = BLOCKS.register("math_energy_block", () -> new LiquidBlock(ModFluids.SOURCE_MATH_ENERGY, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
 
     public static final RegistryObject<Block> ADDER = BLOCKS.register("adder", () -> new AdderBlock(BlockBehaviour.Properties.of(Material.STONE)));
 

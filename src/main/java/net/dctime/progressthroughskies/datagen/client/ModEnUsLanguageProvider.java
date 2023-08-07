@@ -31,5 +31,8 @@ public class ModEnUsLanguageProvider extends LanguageProvider
         this.add("word.progressthroughskies.chance", "Chance");
         this.add("jeititle.progressthroughskies.recipetype.adder", "Adding");
         this.add("guititle.progressthroughskies.adder", "Adder");
+        this.addItem(ModItems.MATH_ENERGY_BUCKET, "Math Energy Bucket");
+        this.add("fluid_type.progressthroughskies.math_energy", "Math Energy");
+        this.addItem(ModItems.ADDER_ITEM, "Adder");
     }
 }

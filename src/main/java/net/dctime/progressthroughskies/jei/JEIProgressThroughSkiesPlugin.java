@@ -1,12 +1,12 @@
-package net.dctime.progressthroughskies;
+package net.dctime.progressthroughskies.jei;
 
-import com.ibm.icu.impl.StringRange;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
+import net.dctime.progressthroughskies.jei.categories.AdderRecipeCategory;
 import net.dctime.progressthroughskies.events.mod.ProgressThroughSkies;
 import net.dctime.progressthroughskies.registers.ModItems;
 import net.dctime.progressthroughskies.registers.recipes.AdderRecipe;
