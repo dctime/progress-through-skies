@@ -94,7 +94,7 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("progressthroughkies.adder.gui.title");
+        return Component.translatable("guititle.progressthroughskies.adder");
     }
 
     @Nullable

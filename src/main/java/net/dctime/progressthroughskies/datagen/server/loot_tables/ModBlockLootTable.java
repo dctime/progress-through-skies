@@ -33,6 +33,7 @@ public class ModBlockLootTable extends BlockLoot
         ).withPool(LootPool.lootPool()
                         .setRolls(UniformGenerator.between(0, 2))
                         .add(LootItem.lootTableItem(ModItems.SAND_DUST.get()))));
+        this.dropSelf(ModBlocks.ADDER.get());
     }
 
     @Override

@@ -28,5 +28,8 @@ public class ModEnUsLanguageProvider extends LanguageProvider
         this.addItem(ModItems.DUSTED_WATER_BUCKET, "Dusted Water Bucket");
         this.add("fluid_type.progressthroughskies.dusted_water", "Dusted Water");
         this.add("sound.progressthroughskies.dusted_water_hurt_eye", "Eye's Hurt");
+        this.add("word.progressthroughskies.chance", "Chance");
+        this.add("jeititle.progressthroughskies.recipetype.adder", "Adding");
+        this.add("guititle.progressthroughskies.adder", "Adder");
     }
 }

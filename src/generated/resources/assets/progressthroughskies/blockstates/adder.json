@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "progressthroughskies:block/adder",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "progressthroughskies:block/adder"
+    },
+    "facing=south": {
+      "model": "progressthroughskies:block/adder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "progressthroughskies:block/adder",
+      "y": 270
+    }
+  }
+}

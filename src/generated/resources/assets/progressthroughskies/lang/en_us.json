@@ -2,13 +2,16 @@
   "block.progressthroughskies.bedrock_gravel": "Bedrock Gravel",
   "block.progressthroughskies.dusted_bedrock": "Dusted Bedrock",
   "fluid_type.progressthroughskies.dusted_water": "Dusted Water",
+  "guititle.progressthroughskies.adder": "Adder",
   "item.progressthroughskies.bedrock_dust": "Bedrock Dust",
   "item.progressthroughskies.dusted_water_bucket": "Dusted Water Bucket",
   "item.progressthroughskies.gravel_dust": "Gravel Dust",
   "item.progressthroughskies.rain_wand": "Rain Wand",
   "item.progressthroughskies.sand_dust": "Sand Dust",
   "itemGroup.progress_through_skies": "Progress Through Skies",
+  "jeititle.progressthroughskies.recipetype.adder": "Adding",
   "sound.progressthroughskies.dusted_water_hurt_eye": "Eye's Hurt",
   "tooltip.rain_wand.info": "&7Summons rain by right clicking it",
-  "tooltip.rain_wand.warn": "&l&4&o&nStrike lightning on your head for not having patience"
+  "tooltip.rain_wand.warn": "&l&4&o&nStrike lightning on your head for not having patience",
+  "word.progressthroughskies.chance": "Chance"
 }

@@ -23,7 +23,7 @@ public class ModBlocks
 
     public static final RegistryObject<LiquidBlock> DUSTED_WATER = BLOCKS.register("dusted_water_block", () -> new LiquidBlock(ModFluids.SOURCE_DUSTED_WATER, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
 
-    public static final RegistryObject<Block> ADDER = BLOCKS.register("adder_block", () -> new AdderBlock(BlockBehaviour.Properties.of(Material.STONE)));
+    public static final RegistryObject<Block> ADDER = BLOCKS.register("adder", () -> new AdderBlock(BlockBehaviour.Properties.of(Material.STONE)));
 
     public static void register(IEventBus eventBus)
     {

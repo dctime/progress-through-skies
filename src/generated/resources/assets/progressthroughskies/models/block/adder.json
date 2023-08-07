@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "progressthroughskies:block/adder/adder_down",
+    "east": "progressthroughskies:block/adder/adder_left_up",
+    "north": "progressthroughskies:block/adder/adder_front",
+    "south": "progressthroughskies:block/adder/adder_blank",
+    "up": "progressthroughskies:block/adder/adder_left_up",
+    "west": "progressthroughskies:block/adder/adder_right"
+  }
+}
