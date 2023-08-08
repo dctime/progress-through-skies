@@ -34,7 +34,7 @@ public class RecipeUtil {
 
     public static FluidTagIngredient parseFluid(JsonObject json, String key) {
         JsonObject mix = json.get(key).getAsJsonObject();
-        int count = mix.get("count").getAsInt();
+        int count = mix.get("amount").getAsInt();
         if (count < 1) {
             count = 1;
         }

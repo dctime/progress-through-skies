@@ -13,6 +13,8 @@
   "item.progressthroughskies.sand_dust": "Sand Dust",
   "itemGroup.progress_through_skies": "Progress Through Skies",
   "jeititle.progressthroughskies.recipetype.adder": "Adding",
+  "progressthroughskies.tooltip.liquid.amount": "%s mB",
+  "progressthroughskies.tooltip.liquid.amount.with.capacity": "%s / %s mB",
   "sound.progressthroughskies.dusted_water_hurt_eye": "Eye's Hurt",
   "tooltip.rain_wand.info": "&7Summons rain by right clicking it",
   "tooltip.rain_wand.warn": "&l&4&o&nStrike lightning on your head for not having patience",

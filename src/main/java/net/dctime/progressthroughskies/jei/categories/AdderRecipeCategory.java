@@ -1,6 +1,7 @@
 package net.dctime.progressthroughskies.jei.categories;
 
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -15,6 +16,8 @@ import net.dctime.progressthroughskies.registers.recipes.AdderRecipe;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
 
 public class AdderRecipeCategory implements IRecipeCategory<AdderRecipe>
 {
@@ -60,6 +63,9 @@ public class AdderRecipeCategory implements IRecipeCategory<AdderRecipe>
                 (recipeSlotView, tooltip) -> tooltip.add(Component.literal(chance + ": " + recipe.by_product_1_chance * 100 + "%")));
         builder.addSlot(RecipeIngredientRole.OUTPUT, 130, 60).addItemStack(recipe.by_product_2).addTooltipCallback(
                 (recipeSlotView, tooltip) -> tooltip.add(Component.literal(chance + ": " + recipe.by_product_2_chance * 100 + "%")));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 13, 21)
+                .addIngredients(ForgeTypes.FLUID_STACK, List.of(recipe.fluid_output))
+                .setFluidRenderer(1000, false, 11, 48);
 
     }
 }

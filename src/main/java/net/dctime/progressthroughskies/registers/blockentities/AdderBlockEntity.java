@@ -244,6 +244,7 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+        ModNetworkHandler.CHANNEL_INSTANCE.send(PacketDistributor.ALL.noArg(), new FluidSyncS2CPacket(this.getFluid(), worldPosition));
         return new AdderMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
@@ -311,8 +312,7 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
         }
 
         Optional<AdderRecipe> recipe = level.getRecipeManager().getRecipeFor(AdderRecipe.Type.INSTANCE, inventory, level);
-
-        if (recipe.isPresent()) // start the crafting progress
+        if (recipe.isPresent() && (recipe.get().fluid_output.getFluid().isSame(entity.getFluid().getFluid()) || entity.FLUID_TANK.isEmpty())) // start the crafting progress
         {
             entity.progress++;
             // set block entity

@@ -36,7 +36,7 @@ public class AdderScreen extends AbstractContainerScreen<AdderMenu>
 
     private void assignFluidRenderer()
     {
-        renderer = new FluidTankRenderer(64000, true, 16, 61);
+        renderer = new FluidTankRenderer(1000, true, 11, 48);
     }
 
     @Override
@@ -44,12 +44,12 @@ public class AdderScreen extends AbstractContainerScreen<AdderMenu>
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-//        // DETECT MOUSE HOVER
-//        if (MouseUtil.isMouseOver(pMouseX, pMouseY, x+55, y+15, renderer.getWidth(), renderer.getHeight()))
-//        {
-//            renderTooltip(pPoseStack, renderer.getTooltip(menu.getFluidStack(), TooltipFlag.Default.NORMAL),
-//                    Optional.empty(), pMouseX - x, pMouseY - y);
-//        }
+        // DETECT MOUSE HOVER
+        if (MouseUtil.isMouseOver(pMouseX, pMouseY, x+13, y+21, renderer.getWidth(), renderer.getHeight()))
+        {
+            renderTooltip(pPoseStack, renderer.getTooltip(menu.getFluidStack(), TooltipFlag.Default.NORMAL),
+                    Optional.empty(), pMouseX - x, pMouseY - y);
+        }
     }
 
 
@@ -70,7 +70,7 @@ public class AdderScreen extends AbstractContainerScreen<AdderMenu>
             blit(pPoseStack, x + 58, y + 40, 176, 0, 12, menu.getScaledProgress());
         }
 
-        renderer.render(pPoseStack, x+55, y+15, menu.getFluidStack());
+        renderer.render(pPoseStack, x+13, y+21, menu.getFluidStack());
 
     }
 

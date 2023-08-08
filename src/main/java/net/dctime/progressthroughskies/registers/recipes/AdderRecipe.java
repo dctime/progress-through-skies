@@ -20,6 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
+import java.util.Optional;
+
 public class AdderRecipe implements Recipe<SimpleContainer>
 {
     private static final Logger LOGGER = LogUtils.getLogger();

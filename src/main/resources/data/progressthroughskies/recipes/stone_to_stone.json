@@ -1,11 +1,11 @@
 {
   "type": "progressthroughskies:adder",
   "input_left": {
-    "item": "minecraft:stone",
+    "item": "minecraft:dirt",
     "count": 3
   },
   "input_right": {
-    "item": "minecraft:dirt",
+    "item": "minecraft:stone",
     "count": 2
   },
   "main_output": {
@@ -13,18 +13,18 @@
     "count": 2
   },
   "by_product_1": {
-    "item": "minecraft:diamond",
-    "count": 3
+    "item": "minecraft:air",
+    "count": 0
   },
-  "by_product_1_chance": 0.5,
+  "by_product_1_chance": 0.0,
   "by_product_2": {
-    "item": "minecraft:coal",
-    "count": 3
+    "item": "minecraft:air",
+    "count": 0
   },
-  "by_product_2_chance": 0.7,
+  "by_product_2_chance": 0.0,
   "fluid_output":
   {
-    "fluid": "minecraft:water",
+    "fluid": "minecraft:lava",
     "amount": 100
   }
 }
