@@ -321,8 +321,8 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
             if (entity.progress >= entity.maxProgress)
             {
                 craftItem(entity, recipe.get()); //eat input get output
-                LOGGER.debug("Fluid Tank changed in BlockEntity");
-                entity.FLUID_TANK.fill(new FluidStack(Fluids.LAVA, 9000), IFluidHandler.FluidAction.EXECUTE);
+//                LOGGER.debug("Fluid Tank changed in BlockEntity");
+                entity.FLUID_TANK.fill(recipe.get().fluid_output, IFluidHandler.FluidAction.EXECUTE);
                 entity.progress = 0;
             }
 
