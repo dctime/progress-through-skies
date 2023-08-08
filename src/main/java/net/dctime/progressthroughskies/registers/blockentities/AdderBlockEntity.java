@@ -1,9 +1,15 @@
 package net.dctime.progressthroughskies.registers.blockentities;
 
 import com.ibm.icu.impl.StringRange;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Decoder;
+import net.dctime.progressthroughskies.lib.FluidWrappedHandler;
 import net.dctime.progressthroughskies.lib.WrappedHandler;
+import net.dctime.progressthroughskies.network.ModNetworkHandler;
+import net.dctime.progressthroughskies.network.packets.FluidSyncS2CPacket;
 import net.dctime.progressthroughskies.registers.ModBlockEntities;
+import net.dctime.progressthroughskies.registers.ModFluidTypes;
+import net.dctime.progressthroughskies.registers.ModFluids;
 import net.dctime.progressthroughskies.registers.blocks.AdderBlock;
 import net.dctime.progressthroughskies.registers.menus.AdderMenu;
 import net.dctime.progressthroughskies.registers.recipes.AdderRecipe;
@@ -33,8 +39,10 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.ItemStackHandler;
+import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
 
 import java.util.Map;
 import java.util.Optional;
@@ -42,6 +50,7 @@ import java.util.Random;
 
 public class AdderBlockEntity extends BlockEntity implements MenuProvider
 {
+    private static final Logger LOGGER = LogUtils.getLogger();
     // For syncing with menu in client
     protected final ContainerData data;
     private int progress = 0;
@@ -50,19 +59,27 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
     private final FluidTank FLUID_TANK = new FluidTank(64000)
     {
         @Override
-        protected void onContentsChanged() {
+        protected void onContentsChanged()
+        {
+//            LOGGER.debug("Fluid change detect");
             setChanged();
+            assert level != null;
+            if (!level.isClientSide()) {
+                ModNetworkHandler.CHANNEL_INSTANCE.send(PacketDistributor.ALL.noArg(), new FluidSyncS2CPacket(this.fluid, worldPosition));
+//                LOGGER.debug("Block Entity Packet Send: Fluid: " + this.fluid);
+            }
         }
 
         @Override
         public boolean isFluidValid(FluidStack stack) {
-            return false;
+            return true;
         }
     };
     private LazyOptional<IFluidHandler> lazyFluidHandler = LazyOptional.empty();
 
     public void setFluid(FluidStack stack)
     {
+//        LOGGER.debug("Packet Arrived at blockEntity");
         this.FLUID_TANK.setFluid(stack);
     }
 
@@ -140,6 +157,14 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
                     Direction.UP, LazyOptional.of(() -> new WrappedHandler(itemStackHandler, (i) -> false,
                             (index, stack) -> index == 1 && itemStackHandler.isItemValid(1, stack))));
 
+    private final Map<Direction, LazyOptional<FluidWrappedHandler>> directionFluidWrappedHandlerMap =
+            Map.of(Direction.DOWN, LazyOptional.of(() -> new FluidWrappedHandler(FLUID_TANK, true, (f) -> false)),
+                    Direction.NORTH, LazyOptional.of(() -> new FluidWrappedHandler(FLUID_TANK, true, (f) -> false)),
+                    Direction.SOUTH, LazyOptional.of(() -> new FluidWrappedHandler(FLUID_TANK, true, (f) -> false)),
+                    Direction.EAST, LazyOptional.of(() -> new FluidWrappedHandler(FLUID_TANK, true, (f) -> false)),
+                    Direction.WEST, LazyOptional.of(() -> new FluidWrappedHandler(FLUID_TANK, true, (f) -> false)),
+                    Direction.UP, LazyOptional.of(() -> new FluidWrappedHandler(FLUID_TANK, true, (f) -> false)));
+
     private LazyOptional<ItemStackHandler> lazyItemStackHandler = LazyOptional.empty();
 
 
@@ -179,7 +204,33 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
 
         if (cap == ForgeCapabilities.FLUID_HANDLER)
         {
-            return lazyFluidHandler.cast();
+            if (side == null)
+            {
+                return lazyFluidHandler.cast();
+            }
+            if (directionFluidWrappedHandlerMap.containsKey(side))
+            {
+//                LOGGER.debug("Fluid Fill in request from sides");
+                Direction localDir = this.getBlockState().getValue(AdderBlock.FACING);
+
+                if (side == Direction.UP || side == Direction.DOWN)
+                {
+                    return directionFluidWrappedHandlerMap.get(side).cast();
+                }
+                return switch (localDir)
+                {
+                    // NORTH: PEOPLE at south when placed, NORTH SIDE IS AT SOUTH, NEED FLIP
+                    // cast() return the value of the lambda expression stored in the directionWrappedHandling
+                    case NORTH -> directionFluidWrappedHandlerMap.get(side.getOpposite()).cast();
+                    case SOUTH -> directionFluidWrappedHandlerMap.get(side).cast();
+                    // EAST:　PEOPLE at east, NORTH SIDE is at EAST, counterclockwise to match the local one to the people one
+                    case EAST -> directionFluidWrappedHandlerMap.get(side.getCounterClockWise()).cast();
+                    case WEST -> directionFluidWrappedHandlerMap.get(side.getClockWise()).cast();
+                    default -> directionFluidWrappedHandlerMap.get(side).cast();
+                };
+
+            }
+
         }
         return super.getCapability(cap, side);
     }
@@ -270,6 +321,8 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
             if (entity.progress >= entity.maxProgress)
             {
                 craftItem(entity, recipe.get()); //eat input get output
+                LOGGER.debug("Fluid Tank changed in BlockEntity");
+                entity.FLUID_TANK.fill(new FluidStack(Fluids.LAVA, 9000), IFluidHandler.FluidAction.EXECUTE);
                 entity.progress = 0;
             }
 

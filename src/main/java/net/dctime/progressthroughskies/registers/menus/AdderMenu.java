@@ -14,12 +14,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.SlotItemHandler;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
 import java.util.List;
 
+// backend of screen
 public class AdderMenu extends AbstractContainerMenu {
     private static final Logger LOGGER = LogUtils.getLogger();
     public final AdderBlockEntity blockEntity;
@@ -30,6 +32,8 @@ public class AdderMenu extends AbstractContainerMenu {
     {
         return data.get(0) > 0;
     }
+
+    private FluidStack fluidStack;
 
     public int getScaledProgress()
     {
@@ -43,16 +47,17 @@ public class AdderMenu extends AbstractContainerMenu {
 
 
     public AdderMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(5));
     }
 
     public AdderMenu(int id, Inventory inv, BlockEntity entity, ContainerData data)
     {
         super(ModMenuTypes.ADDER_MENU_TYPE.get(), id);
-        checkContainerSize(inv, 3);
+        checkContainerSize(inv, 5);
         blockEntity = (AdderBlockEntity) entity;
         this.level = inv.player.level;
         this.data = data;
+        this.fluidStack = blockEntity.getFluid();
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
@@ -122,6 +127,17 @@ public class AdderMenu extends AbstractContainerMenu {
         return copyOfSourceStack;
     }
 
+    public void setFluid(FluidStack fluidstack)
+    {
+        LOGGER.debug("Packet arrived at menu");
+        this.fluidStack = fluidstack;
+    }
+
+    public FluidStack getFluidStack()
+    {
+        return this.fluidStack;
+    }
+
     // Can we open the block?
     @Override
     public boolean stillValid(Player pPlayer) {
@@ -146,4 +162,6 @@ public class AdderMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 144));
         }
     }
+
+
 }

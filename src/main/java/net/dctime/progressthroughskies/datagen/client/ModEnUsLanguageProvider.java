@@ -34,5 +34,7 @@ public class ModEnUsLanguageProvider extends LanguageProvider
         this.addItem(ModItems.MATH_ENERGY_BUCKET, "Math Energy Bucket");
         this.add("fluid_type.progressthroughskies.math_energy", "Math Energy");
         this.addItem(ModItems.ADDER_ITEM, "Adder");
+        this.add("progressthroughskies.tooltip.liquid.amount.with.capacity", "%s / %s mB");
+        this.add("progressthroughskies.tooltip.liquid.amount", "%s mB");
     }
 }

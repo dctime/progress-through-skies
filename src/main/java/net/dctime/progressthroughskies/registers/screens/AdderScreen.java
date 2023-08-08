@@ -3,6 +3,9 @@ package net.dctime.progressthroughskies.registers.screens;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.dctime.progressthroughskies.events.mod.ProgressThroughSkies;
+import net.dctime.progressthroughskies.lib.FluidTankRenderer;
+import net.dctime.progressthroughskies.lib.MouseUtil;
+import net.dctime.progressthroughskies.registers.ModFluids;
 import net.dctime.progressthroughskies.registers.menus.AdderMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
@@ -10,11 +13,16 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraftforge.fluids.FluidStack;
+
+import java.util.Optional;
 
 public class AdderScreen extends AbstractContainerScreen<AdderMenu>
 {
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(ProgressThroughSkies.MODID, "textures/gui/adder_gui.png");
+    private FluidTankRenderer renderer;
 
     public AdderScreen(AdderMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -23,7 +31,28 @@ public class AdderScreen extends AbstractContainerScreen<AdderMenu>
     @Override
     protected void init() {
         super.init();
+        assignFluidRenderer();
     }
+
+    private void assignFluidRenderer()
+    {
+        renderer = new FluidTankRenderer(64000, true, 16, 61);
+    }
+
+    @Override
+    protected void renderLabels(PoseStack pPoseStack, int pMouseX, int pMouseY) {
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
+
+//        // DETECT MOUSE HOVER
+//        if (MouseUtil.isMouseOver(pMouseX, pMouseY, x+55, y+15, renderer.getWidth(), renderer.getHeight()))
+//        {
+//            renderTooltip(pPoseStack, renderer.getTooltip(menu.getFluidStack(), TooltipFlag.Default.NORMAL),
+//                    Optional.empty(), pMouseX - x, pMouseY - y);
+//        }
+    }
+
+
 
     @Override
     protected void renderBg(PoseStack pPoseStack, float pPartialTick, int pMouseX, int pMouseY) {
@@ -40,6 +69,8 @@ public class AdderScreen extends AbstractContainerScreen<AdderMenu>
         {
             blit(pPoseStack, x + 58, y + 40, 176, 0, 12, menu.getScaledProgress());
         }
+
+        renderer.render(pPoseStack, x+55, y+15, menu.getFluidStack());
 
     }
 

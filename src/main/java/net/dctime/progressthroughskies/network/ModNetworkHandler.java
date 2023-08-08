@@ -1,5 +1,6 @@
 package net.dctime.progressthroughskies.network;
 
+import net.dctime.progressthroughskies.network.packets.FluidSyncS2CPacket;
 import net.dctime.progressthroughskies.network.packets.PlayerLocalScreamPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkRegistry;
@@ -25,6 +26,15 @@ public class ModNetworkHandler {
                 PlayerLocalScreamPacket::encode,
                 PlayerLocalScreamPacket::new,
                 PlayerLocalScreamPacket::handling
+        );
+
+        CHANNEL_INSTANCE.registerMessage
+        (
+            id++,
+            FluidSyncS2CPacket.class,
+            FluidSyncS2CPacket::toBytes,
+            FluidSyncS2CPacket::new,
+            FluidSyncS2CPacket::handle
         );
     }
 }

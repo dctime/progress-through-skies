@@ -21,5 +21,10 @@
     "item": "minecraft:coal",
     "count": 3
   },
-  "by_product_2_chance": 0.7
+  "by_product_2_chance": 0.7,
+  "fluid_generated":
+  {
+    "fluid": "minecraft:water",
+    "amount": 10
+  }
 }
