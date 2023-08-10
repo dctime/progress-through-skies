@@ -13,12 +13,12 @@
     "count": 2
   },
   "by_product_1": {
-    "item": "minecraft:air",
+    "item": "minecraft:stone",
     "count": 0
   },
   "by_product_1_chance": 0.0,
   "by_product_2": {
-    "item": "minecraft:air",
+    "item": "minecraft:stone",
     "count": 0
   },
   "by_product_2_chance": 0.0,
@@ -26,5 +26,6 @@
   {
     "fluid": "minecraft:lava",
     "amount": 100
-  }
+  },
+  "duration": 100
 }

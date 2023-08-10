@@ -314,6 +314,7 @@ public class AdderBlockEntity extends BlockEntity implements MenuProvider
         Optional<AdderRecipe> recipe = level.getRecipeManager().getRecipeFor(AdderRecipe.Type.INSTANCE, inventory, level);
         if (recipe.isPresent() && (recipe.get().fluid_output.getFluid().isSame(entity.getFluid().getFluid()) || entity.FLUID_TANK.isEmpty())) // start the crafting progress
         {
+            entity.maxProgress = recipe.get().duration;
             entity.progress++;
             // set block entity
             setChanged(level, blockPos, blockState);

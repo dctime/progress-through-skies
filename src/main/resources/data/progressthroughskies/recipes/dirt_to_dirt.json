@@ -26,5 +26,6 @@
   {
     "fluid": "minecraft:water",
     "amount": 100
-  }
+  },
+  "duration": 10
 }

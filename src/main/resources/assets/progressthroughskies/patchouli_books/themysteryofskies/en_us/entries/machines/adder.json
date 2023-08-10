@@ -1,0 +1,21 @@
+{
+  "name": "Adder",
+  "icon": "minecraft:writable_book",
+  "category": "progressthroughskies:machines",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "title": "Adder",
+      "item": "progressthroughskies:adder",
+      "text": "Adds two stuff up and get 1, 2, or 3 items with some fluid extracted in the process"
+    },
+    {
+      "type": "patchouli:image",
+      "title": "GUI",
+      "images": [
+        "progressthroughskies:textures/misc/entries/adder_gui_label.png"
+      ],
+      "text": "Hello There"
+    }
+  ]
+}

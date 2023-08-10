@@ -129,7 +129,7 @@ public class AdderMenu extends AbstractContainerMenu {
 
     public void setFluid(FluidStack fluidstack)
     {
-        LOGGER.debug("Packet arrived at menu");
+//        LOGGER.debug("Packet arrived at menu");
         this.fluidStack = fluidstack;
     }
 

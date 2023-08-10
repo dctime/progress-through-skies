@@ -36,9 +36,10 @@ public class AdderRecipe implements Recipe<SimpleContainer>
     public final double by_product_1_chance;
     public final double by_product_2_chance;
     public final FluidStack fluid_output;
+    public int duration;
 
     public AdderRecipe(ResourceLocation id, ItemStack input_left, ItemStack input_right, ItemStack main_output, ItemStack by_product_1, ItemStack by_product_2,
-                       double by_product_1_chance, double by_produce_2_chance, FluidStack fluid_output)
+                       double by_product_1_chance, double by_produce_2_chance, FluidStack fluid_output, int duration)
     {
         this.id = id;
         this.input_left = input_left;
@@ -49,6 +50,7 @@ public class AdderRecipe implements Recipe<SimpleContainer>
         this.by_product_1_chance = by_product_1_chance;
         this.by_product_2_chance = by_produce_2_chance;
         this.fluid_output = fluid_output;
+        this.duration = duration;
     }
 
     // If the items in the block matches the recipe
@@ -130,8 +132,9 @@ public class AdderRecipe implements Recipe<SimpleContainer>
             double by_product_2_chance = GsonHelper.getAsDouble(pSerializedRecipe, "by_product_2_chance");
             JsonObject fluid_output_object = pSerializedRecipe.get("fluid_output").getAsJsonObject();
             FluidStack fluid_output = RecipeUtil.getFluid(fluid_output_object);
+            int duration = GsonHelper.getAsInt(pSerializedRecipe, "duration");
 
-            return new AdderRecipe(pRecipeId, input_left, input_right, main_output, by_product_1, by_product_2, by_product_1_chance, by_product_2_chance, fluid_output);
+            return new AdderRecipe(pRecipeId, input_left, input_right, main_output, by_product_1, by_product_2, by_product_1_chance, by_product_2_chance, fluid_output, duration);
         }
 
 
@@ -146,7 +149,8 @@ public class AdderRecipe implements Recipe<SimpleContainer>
             double by_product_1_chance = pBuffer.readDouble();
             double by_product_2_chance = pBuffer.readDouble();
             FluidStack fluid_output = pBuffer.readFluidStack();
-            return new AdderRecipe(pRecipeId, input_left, input_right, main_output, by_product_1, by_product_2, by_product_1_chance, by_product_2_chance, fluid_output);
+            int duration = pBuffer.readInt();
+            return new AdderRecipe(pRecipeId, input_left, input_right, main_output, by_product_1, by_product_2, by_product_1_chance, by_product_2_chance, fluid_output, duration);
         }
 
         // Mush match the fromNetwork
@@ -160,6 +164,7 @@ public class AdderRecipe implements Recipe<SimpleContainer>
             pBuffer.writeDouble(pRecipe.by_product_1_chance);
             pBuffer.writeDouble(pRecipe.by_product_2_chance);
             pBuffer.writeFluidStack(pRecipe.fluid_output);
+            pBuffer.writeInt(pRecipe.duration);
 
         }
     }
