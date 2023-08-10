@@ -1,1 +1,0 @@
-This is a helper mod of my modpack "Progress Through Skies".
