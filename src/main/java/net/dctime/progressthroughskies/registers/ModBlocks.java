@@ -3,6 +3,7 @@ package net.dctime.progressthroughskies.registers;
 import net.dctime.progressthroughskies.events.mod.ProgressThroughSkies;
 import net.dctime.progressthroughskies.registers.blocks.AdderBlock;
 import net.dctime.progressthroughskies.registers.blocks.DustedBedrockBlock;
+import net.dctime.progressthroughskies.registers.blocks.NegatorBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GravelBlock;
@@ -24,7 +25,8 @@ public class ModBlocks
     public static final RegistryObject<LiquidBlock> DUSTED_WATER = BLOCKS.register("dusted_water_block", () -> new LiquidBlock(ModFluids.SOURCE_DUSTED_WATER, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
     public static final RegistryObject<LiquidBlock> MATH_ENERGY = BLOCKS.register("math_energy_block", () -> new LiquidBlock(ModFluids.SOURCE_MATH_ENERGY, BlockBehaviour.Properties.copy(Blocks.WATER).noLootTable()));
 
-    public static final RegistryObject<Block> ADDER = BLOCKS.register("adder", () -> new AdderBlock(BlockBehaviour.Properties.of(Material.STONE)));
+    public static final RegistryObject<Block> ADDER = BLOCKS.register("adder", () -> new AdderBlock(BlockBehaviour.Properties.of(Material.METAL)));
+    public static final RegistryObject<Block> NEGATOR = BLOCKS.register("negator", () -> new NegatorBlock(BlockBehaviour.Properties.of(Material.METAL)));
 
     public static void register(IEventBus eventBus)
     {

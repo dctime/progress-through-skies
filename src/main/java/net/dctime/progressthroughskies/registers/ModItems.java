@@ -9,6 +9,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.Locale;
+
 public class ModItems
 {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ProgressThroughSkies.MODID);
@@ -31,6 +33,8 @@ public class ModItems
 
     public static final RegistryObject<BlockItem> ADDER_ITEM = ITEMS.register("adder",
             () -> new BlockItem(ModBlocks.ADDER.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
+    public static final RegistryObject<BlockItem> NEGATOR_ITEM = ITEMS.register("negator",
+            () -> new BlockItem(ModBlocks.NEGATOR.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
 
     public static void register(IEventBus eventBus)
     {

@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.dctime.progressthroughskies.network.ModNetworkHandler;
 import net.dctime.progressthroughskies.registers.*;
 import net.dctime.progressthroughskies.registers.screens.AdderScreen;
+import net.dctime.progressthroughskies.registers.screens.NegatorScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -81,7 +82,9 @@ public class ProgressThroughSkies
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_DUSTED_WATER.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_DUSTED_WATER.get(), RenderType.translucent());
 
+            // Registering Menus and Screens
             MenuScreens.register(ModMenuTypes.ADDER_MENU_TYPE.get(), AdderScreen::new);
+            MenuScreens.register(ModMenuTypes.NEGATOR_MENU_TYPE.get(), NegatorScreen::new);
         }
     }
 }
