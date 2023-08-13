@@ -73,7 +73,7 @@ public class NegatorBlock extends BaseEntityBlock
 
                         isBlockRightThere(pLevel, pPos, Blocks.BLUE_WOOL, -3, 0, -3) &&
                         isBlockRightThere(pLevel, pPos, Blocks.BLUE_WOOL, -2, 0, -3) &&
-                        isBlockRightThere(pLevel, pPos, Blocks.BLUE_WOOL    , -3, 0, -2);
+                        isBlockRightThere(pLevel, pPos, Blocks.BLUE_WOOL, -3, 0, -2);
 
 
         if (!pLevel.isClientSide() && isValid)
