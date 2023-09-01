@@ -35,6 +35,8 @@ public class ModItems
             () -> new BlockItem(ModBlocks.ADDER.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
     public static final RegistryObject<BlockItem> NEGATOR_ITEM = ITEMS.register("negator",
             () -> new BlockItem(ModBlocks.NEGATOR.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
+    public static final RegistryObject<BlockItem> ETCHING_MACHINE_ITEM = ITEMS.register("etching_machine",
+            () -> new BlockItem(ModBlocks.ETCHING_MACHINE.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
 
     public static void register(IEventBus eventBus)
     {
