@@ -2,6 +2,7 @@ package net.dctime.progressthroughskies.registers;
 
 import net.dctime.progressthroughskies.events.mod.ProgressThroughSkies;
 import net.dctime.progressthroughskies.registers.blockentities.AdderBlockEntity;
+import net.dctime.progressthroughskies.registers.blockentities.EtchingMachineEncoderBlockEntity;
 import net.dctime.progressthroughskies.registers.blockentities.NegatorBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -21,6 +22,10 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<NegatorBlockEntity>> NEGATOR_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("negator_block_entity",
                     () -> BlockEntityType.Builder.of(NegatorBlockEntity::new, ModBlocks.NEGATOR.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<EtchingMachineEncoderBlockEntity>> ETCHING_MACHINE_ENCODER_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("etching_machine_encoder_block_entity",
+                    () -> BlockEntityType.Builder.of(EtchingMachineEncoderBlockEntity::new, ModBlocks.ETCHING_MACHINE_ENCODER.get()).build(null));
 
     public static void register(IEventBus eventBus)
     {
