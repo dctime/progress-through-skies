@@ -7,7 +7,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import org.slf4j.Logger;
 
@@ -21,7 +20,8 @@ public class EtchingMachineBlock extends Block
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return this.defaultBlockState().setValue(RECEIVED_POWER, pContext.getLevel().getBestNeighborSignal(pContext.getClickedPos()));
+        this.defaultBlockState().setValue(RECEIVED_POWER, pContext.getLevel().getBestNeighborSignal(pContext.getClickedPos()));
+        return this.defaultBlockState();
     }
 
     @Override
