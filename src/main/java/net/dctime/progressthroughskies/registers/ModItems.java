@@ -3,13 +3,10 @@ package net.dctime.progressthroughskies.registers;
 import net.dctime.progressthroughskies.events.mod.ProgressThroughSkies;
 import net.dctime.progressthroughskies.registers.items.RainWandItem;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.Locale;
 
 public class ModItems
 {
@@ -35,10 +32,10 @@ public class ModItems
             () -> new BlockItem(ModBlocks.ADDER.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
     public static final RegistryObject<BlockItem> NEGATOR_ITEM = ITEMS.register("negator",
             () -> new BlockItem(ModBlocks.NEGATOR.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
-    public static final RegistryObject<BlockItem> ETCHING_MACHINE_ITEM = ITEMS.register("etching_machine",
-            () -> new BlockItem(ModBlocks.ETCHING_MACHINE.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
-    public static final RegistryObject<BlockItem> ETCHING_MACHINE_ENCRYPTER_ITEM = ITEMS.register("etching_machine_encrypter",
-            () -> new BlockItem(ModBlocks.ETCHING_MACHINE_ENCRYPTER.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
+    public static final RegistryObject<BlockItem> ETCHING_MACHINE_DECODER_ITEM = ITEMS.register("etching_machine_decoder",
+            () -> new BlockItem(ModBlocks.ETCHING_MACHINE_DECODER.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
+    public static final RegistryObject<BlockItem> ETCHING_MACHINE_ENCODER_ITEM = ITEMS.register("etching_machine_encoder",
+            () -> new BlockItem(ModBlocks.ETCHING_MACHINE_ENCODER.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
 
     public static void register(IEventBus eventBus)
     {

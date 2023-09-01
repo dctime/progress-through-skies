@@ -25,8 +25,8 @@ public class ModBlocks
 
     public static final RegistryObject<Block> ADDER = BLOCKS.register("adder", () -> new AdderBlock(BlockBehaviour.Properties.of(Material.METAL)));
     public static final RegistryObject<Block> NEGATOR = BLOCKS.register("negator", () -> new NegatorBlock(BlockBehaviour.Properties.of(Material.METAL)));
-    public static final RegistryObject<Block> ETCHING_MACHINE = BLOCKS.register("etching_machine", () -> new EtchingMachineBlock(BlockBehaviour.Properties.of(Material.METAL)));
-    public static final RegistryObject<Block> ETCHING_MACHINE_ENCRYPTER = BLOCKS.register("etching_machine_encrypter",
+    public static final RegistryObject<Block> ETCHING_MACHINE_DECODER = BLOCKS.register("etching_machine_decoder", () -> new EtchingMachineBlock(BlockBehaviour.Properties.of(Material.METAL)));
+    public static final RegistryObject<Block> ETCHING_MACHINE_ENCODER = BLOCKS.register("etching_machine_encoder",
             () -> new EtchingMachineEncrypterBlock(BlockBehaviour.Properties.of(Material.METAL)));
 
     public static void register(IEventBus eventBus)
