@@ -10,11 +10,11 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import org.slf4j.Logger;
 
-public class EtchingMachineBlock extends Block
+public class EtchingMachineDecoderBlock extends Block
 {
     private static final Logger LOGGER = LogUtils.getLogger();
     public static final IntegerProperty RECEIVED_POWER = IntegerProperty.create("received_power", 0, 15);
-    public EtchingMachineBlock(Properties pProperties) {
+    public EtchingMachineDecoderBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.defaultBlockState().setValue(RECEIVED_POWER, 0));
     }

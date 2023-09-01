@@ -12,11 +12,11 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 
-public class EtchingMachineEncrypterBlock extends Block
+public class EtchingMachineEncoderBlock extends Block
 {
     private static final Logger LOGGER = LogUtils.getLogger();
     public static final IntegerProperty EMIT_POWER = IntegerProperty.create("emit_power", 0, 15);
-    public EtchingMachineEncrypterBlock(Properties pProperties) {
+    public EtchingMachineEncoderBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.defaultBlockState().setValue(EMIT_POWER, 13));
     }
