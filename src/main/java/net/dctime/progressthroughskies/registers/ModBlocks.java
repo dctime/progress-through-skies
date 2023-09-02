@@ -29,6 +29,9 @@ public class ModBlocks
     public static final RegistryObject<Block> ETCHING_MACHINE_ENCODER = BLOCKS.register("etching_machine_encoder",
             () -> new EtchingMachineEncoderBlock(BlockBehaviour.Properties.of(Material.METAL)));
 
+    public static final RegistryObject<Block> ETCHING_MACHINE_CONTROLLER = BLOCKS.register("etching_machine_controller",
+            () -> new EtchingMachineControllerBlock(BlockBehaviour.Properties.of(Material.METAL)));
+
     public static void register(IEventBus eventBus)
     {
         BLOCKS.register(eventBus);

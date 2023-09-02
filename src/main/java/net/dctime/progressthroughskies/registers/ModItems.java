@@ -36,6 +36,8 @@ public class ModItems
             () -> new BlockItem(ModBlocks.ETCHING_MACHINE_DECODER.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
     public static final RegistryObject<BlockItem> ETCHING_MACHINE_ENCODER_ITEM = ITEMS.register("etching_machine_encoder",
             () -> new BlockItem(ModBlocks.ETCHING_MACHINE_ENCODER.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
+    public static final RegistryObject<BlockItem> ETCHING_MACHINE_CONTROLLER_ITEM = ITEMS.register("etching_machine_controller",
+            () -> new BlockItem(ModBlocks.ETCHING_MACHINE_CONTROLLER.get(), new Item.Properties().tab(ModCreativeModTab.MOD_CREATIVE_MODE_TAB)));
 
     public static void register(IEventBus eventBus)
     {

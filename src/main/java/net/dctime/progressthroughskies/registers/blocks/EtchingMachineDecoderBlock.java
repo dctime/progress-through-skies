@@ -75,8 +75,8 @@ public class EtchingMachineDecoderBlock extends BaseEntityBlock
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide())
         {
-            pPlayer.sendSystemMessage(Component.literal(((EtchingMachineDecoderBlockEntity) pLevel.getBlockEntity(pPos)).getCodeList().toString()));
+            pPlayer.displayClientMessage(Component.literal(((EtchingMachineDecoderBlockEntity) pLevel.getBlockEntity(pPos)).getCodeList().toString()), false);
         }
-        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
+        return InteractionResult.SUCCESS;
     }
 }

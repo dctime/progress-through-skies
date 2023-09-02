@@ -1,10 +1,7 @@
 package net.dctime.progressthroughskies.registers;
 
 import net.dctime.progressthroughskies.events.mod.ProgressThroughSkies;
-import net.dctime.progressthroughskies.registers.blockentities.AdderBlockEntity;
-import net.dctime.progressthroughskies.registers.blockentities.EtchingMachineDecoderBlockEntity;
-import net.dctime.progressthroughskies.registers.blockentities.EtchingMachineEncoderBlockEntity;
-import net.dctime.progressthroughskies.registers.blockentities.NegatorBlockEntity;
+import net.dctime.progressthroughskies.registers.blockentities.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -31,6 +28,10 @@ public class ModBlockEntities
     public static final RegistryObject<BlockEntityType<EtchingMachineDecoderBlockEntity>> ETCHING_MACHINE_DECODER_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("etching_machine_decoder_block_entity",
                     () -> BlockEntityType.Builder.of(EtchingMachineDecoderBlockEntity::new, ModBlocks.ETCHING_MACHINE_DECODER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<EtchingMachineControllerBlockEntity>> ETCHING_MACHINE_CONTROLLER_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("etching_machine_controller_block_entity",
+                    () -> BlockEntityType.Builder.of(EtchingMachineControllerBlockEntity::new, ModBlocks.ETCHING_MACHINE_CONTROLLER.get()).build(null));
 
     public static void register(IEventBus eventBus)
     {

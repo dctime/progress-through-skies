@@ -35,7 +35,7 @@ public class EtchingMachineEncoderBlockEntity extends BlockEntity
             if (entity.currentTimer == entity.DELAY_TIMER)
             {
                 // DO STUFF
-                level.setBlock(pos, state.setValue(EtchingMachineEncoderBlock.EMIT_POWER, RAND.nextInt(16)), 1);
+                level.setBlock(pos, state.setValue(EtchingMachineEncoderBlock.EMIT_POWER, RAND.nextInt(16)), 3);
                 // end
                 entity.currentTimer = 0;
             }
