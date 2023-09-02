@@ -70,13 +70,4 @@ public class EtchingMachineDecoderBlock extends BaseEntityBlock
     public RenderShape getRenderShape(BlockState pState) {
         return RenderShape.MODEL;
     }
-
-    @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (!pLevel.isClientSide())
-        {
-            pPlayer.displayClientMessage(Component.literal(((EtchingMachineDecoderBlockEntity) pLevel.getBlockEntity(pPos)).getCodeList().toString()), false);
-        }
-        return InteractionResult.SUCCESS;
-    }
 }
