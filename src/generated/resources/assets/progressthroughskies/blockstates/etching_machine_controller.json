@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "state=0": {
+      "model": "progressthroughskies:block/etching_machine_controller_red"
+    },
+    "state=1": {
+      "model": "progressthroughskies:block/etching_machine_controller_yellow"
+    },
+    "state=2": {
+      "model": "progressthroughskies:block/etching_machine_controller_green"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "progressthroughskies:block/etching_machine_encoder"
+  }
+}

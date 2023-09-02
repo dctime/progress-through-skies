@@ -147,7 +147,7 @@ repositories {
     maven { url 'https://modmaven.dev/' }
     /* MEKANISM END */
     /* PATCHOULI START */
-    maven { url 'https://maven.blamejared.com' }
+//    maven { url 'https://maven.blamejared.com' }
     /* PATCHOULI END */
 
 
@@ -187,8 +187,8 @@ dependencies {
     runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")// Mekanism: Tools
     /* MEKANISM END */
     /* PATCHOULI START */
-    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-77:api")
-    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-77")
+//    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-77:api")
+//    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.19.2-77")
     /* PATCHOULI END */
 
 }

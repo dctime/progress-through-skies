@@ -1,4 +1,8 @@
-// 1.19.2	2023-08-07T15:13:09.7798434	LootTables
+// 1.19.2	2023-09-02T21:15:35.3098802	LootTables
 4ef30a6eca9e8ab2d1cdfd9546296f154f00173c data/progressthroughskies/loot_tables/blocks/adder.json
 e0f83411cc5b1fb222cbb7aadbb906a7b240c20b data/progressthroughskies/loot_tables/blocks/bedrock_gravel.json
 114957ac70812cf9774dbe4d07fd06c2afad88f4 data/progressthroughskies/loot_tables/blocks/dusted_bedrock.json
+a3462c2783180eb24ba6f2232a330d247827bcea data/progressthroughskies/loot_tables/blocks/etching_machine_controller.json
+ecc242e53f5ef9797e321442c28df7bf422c7d9d data/progressthroughskies/loot_tables/blocks/etching_machine_decoder.json
+a21599cd54431b6868c4c4099ddd6df5e7e82198 data/progressthroughskies/loot_tables/blocks/etching_machine_encoder.json
+52259ee8c019f318c7351ec6e9b9594f282541f6 data/progressthroughskies/loot_tables/blocks/negator.json

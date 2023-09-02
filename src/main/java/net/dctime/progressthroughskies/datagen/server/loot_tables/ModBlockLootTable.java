@@ -14,6 +14,7 @@ import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlockLootTable extends BlockLoot
@@ -34,6 +35,10 @@ public class ModBlockLootTable extends BlockLoot
                         .setRolls(UniformGenerator.between(0, 2))
                         .add(LootItem.lootTableItem(ModItems.SAND_DUST.get()))));
         this.dropSelf(ModBlocks.ADDER.get());
+        this.dropSelf(ModBlocks.NEGATOR.get());
+        this.dropSelf(ModBlocks.ETCHING_MACHINE_ENCODER.get());
+        this.dropSelf(ModBlocks.ETCHING_MACHINE_DECODER.get());
+        this.dropSelf(ModBlocks.ETCHING_MACHINE_CONTROLLER.get());
     }
 
     @Override

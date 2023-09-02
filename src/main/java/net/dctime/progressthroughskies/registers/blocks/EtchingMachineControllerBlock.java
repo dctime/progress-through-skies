@@ -29,7 +29,7 @@ import org.slf4j.Logger;
 
 public class EtchingMachineControllerBlock extends BaseEntityBlock
 {
-    public static final IntegerProperty STATE_FLAG = IntegerProperty.create("state_flag", 0, 2);
+    public static final IntegerProperty STATE_FLAG = IntegerProperty.create("state", 0, 2);
     public EtchingMachineControllerBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.defaultBlockState().setValue(STATE_FLAG, 0));

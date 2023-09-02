@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "progressthroughskies:block/etching_machine/etching_machine_pillar_top",
+    "east": "progressthroughskies:block/etching_machine/etching_machine_pillar_yellow",
+    "north": "progressthroughskies:block/etching_machine/etching_machine_pillar_yellow",
+    "south": "progressthroughskies:block/etching_machine/etching_machine_pillar_yellow",
+    "up": "progressthroughskies:block/etching_machine/etching_machine_pillar_top",
+    "west": "progressthroughskies:block/etching_machine/etching_machine_pillar_yellow"
+  }
+}
