@@ -36,5 +36,8 @@ public class ModEnUsLanguageProvider extends LanguageProvider
         this.addItem(ModItems.ADDER_ITEM, "Adder");
         this.add("progressthroughskies.tooltip.liquid.amount.with.capacity", "%s / %s mB");
         this.add("progressthroughskies.tooltip.liquid.amount", "%s mB");
+        this.addItem(ModItems.ETCHING_MACHINE_CONTROLLER_ITEM, "Etching Machine Controller");
+        this.addItem(ModItems.ETCHING_MACHINE_ENCODER_ITEM, "Etching Machine Encoder");
+        this.addItem(ModItems.ETCHING_MACHINE_DECODER_ITEM, "Etching Machine Decoder");
     }
 }

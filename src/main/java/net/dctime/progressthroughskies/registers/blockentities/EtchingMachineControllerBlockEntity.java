@@ -119,7 +119,7 @@ public class EtchingMachineControllerBlockEntity extends BlockEntity
             if (pState.getValue(EtchingMachineControllerBlock.STATE_FLAG) == 2)
             {
                 List<Entity> itemEntities = level.getEntities(null,
-                        AABB.ofSize(new Vec3(pPos.getX()+0.5, pPos.getY()-1, pPos.getZ()+0.5), 3, 3, 3));
+                        AABB.ofSize(new Vec3(pPos.getX()+0.5, pPos.getY(), pPos.getZ()+0.5), 3, 3, 3));
                 ((ServerLevel) level).sendParticles(ParticleTypes.ENCHANT, pPos.getX()+2, pPos.getY()+2, pPos.getZ()+2, 1, 0, 0, 0, 0.01);
                 ((ServerLevel) level).sendParticles(ParticleTypes.ENCHANT, pPos.getX()-1, pPos.getY()+2, pPos.getZ()+2, 1, 0, 0, 0, 0.01);
                 ((ServerLevel) level).sendParticles(ParticleTypes.ENCHANT, pPos.getX()+2, pPos.getY()+2, pPos.getZ()-1, 1, 0, 0, 0, 0.01);
@@ -134,7 +134,7 @@ public class EtchingMachineControllerBlockEntity extends BlockEntity
                         x = itemEntity.getX();
                         y = itemEntity.getY();
                         z = itemEntity.getZ();
-                        LOGGER.debug("ADDING PARTICLE");
+//                        LOGGER.debug("ADDING PARTICLE");
                         ((ServerLevel) level).sendParticles(ParticleTypes.DRAGON_BREATH, x, y, z, 1, 0, 1, 0, 0.01);
                         if (rand.nextInt(720) == 0) {
                             ((ServerLevel) level).sendParticles(ParticleTypes.FLASH, x, y, z, 1, 0, 1, 0, 0.01);

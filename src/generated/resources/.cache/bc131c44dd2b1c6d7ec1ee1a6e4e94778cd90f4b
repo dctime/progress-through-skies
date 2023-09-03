@@ -1,4 +1,4 @@
-// 1.19.2	2023-09-02T21:27:13.4802449	Block States: progressthroughskies
+// 1.19.2	2023-09-03T11:13:10.8517621	Block States: progressthroughskies
 3d98c842c0d1e5084f494e33f8f9b2f6375c3f57 assets/progressthroughskies/blockstates/adder.json
 c170dfb20bbe4315491aae9877790a350de1dee9 assets/progressthroughskies/blockstates/bedrock_gravel.json
 f09cb0ff9680203ff2fd85388752e7b130883d57 assets/progressthroughskies/blockstates/dusted_bedrock.json
@@ -16,5 +16,6 @@ e75b765660ff265405f948b470383be1f75d0de8 assets/progressthroughskies/models/bloc
 8893333b6257a1696c653ef36d37ba61ecc240a6 assets/progressthroughskies/models/item/adder.json
 305681dcece88efbf9e58fbe6dc275aaf274908b assets/progressthroughskies/models/item/bedrock_gravel.json
 c9372c9fef3de12d09aeb7b3251c89bb2d48f658 assets/progressthroughskies/models/item/dusted_bedrock.json
+dc34669e6214a677a1ddf790ca218e831dfb88e3 assets/progressthroughskies/models/item/etching_machine_controller.json
 e980af1c20c0f570426c5637761218ba428ee9dd assets/progressthroughskies/models/item/etching_machine_decoder.json
 0aea7ba219352da0e03d4ce8268c64116007d730 assets/progressthroughskies/models/item/etching_machine_encoder.json

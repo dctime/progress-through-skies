@@ -78,6 +78,7 @@ public class ModBlockStateProvider extends BlockStateProvider
                     .modelForState()
                     .modelFile(etchingMachineControllerGreen)
                     .addModel();
+        this.simpleBlockItem(ModBlocks.ETCHING_MACHINE_CONTROLLER.get(), etchingMachineControllerGreen);
 
 
     }
